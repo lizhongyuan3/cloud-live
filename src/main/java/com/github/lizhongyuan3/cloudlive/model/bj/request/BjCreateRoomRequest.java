@@ -1,4 +1,4 @@
-package org.lizy.cloudlive.model.bj.request;
+package com.github.lizhongyuan3.cloudlive.model.bj.request;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,7 +1,7 @@
-package org.lizy.cloudlive.model.bj;
+package com.github.lizhongyuan3.cloudlive.model.bj;
 
-import org.lizy.cloudlive.model.bj.response.BjCreateRoomResponse;
-import org.lizy.cloudlive.model.bj.response.BjLiveResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.BjCreateRoomResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.BjLiveResponse;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;

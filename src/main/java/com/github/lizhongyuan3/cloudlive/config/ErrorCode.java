@@ -1,4 +1,4 @@
-package org.lizy.cloudlive.config;
+package com.github.lizhongyuan3.cloudlive.config;
 
 /**
  * @author lizhongyuan

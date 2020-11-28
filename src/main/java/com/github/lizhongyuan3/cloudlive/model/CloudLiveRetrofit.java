@@ -1,13 +1,13 @@
-package org.lizy.cloudlive.model;
+package com.github.lizhongyuan3.cloudlive.model;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.github.lizhongyuan3.cloudlive.config.BjConfig;
+import com.github.lizhongyuan3.cloudlive.config.BusException;
+import com.github.lizhongyuan3.cloudlive.config.ErrorCode;
+import com.github.lizhongyuan3.cloudlive.enums.CloudLivePlatformEnum;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
-import org.lizy.cloudlive.config.BjConfig;
-import org.lizy.cloudlive.config.BusException;
-import org.lizy.cloudlive.config.ErrorCode;
-import org.lizy.cloudlive.enums.CloudLivePlatformEnum;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 

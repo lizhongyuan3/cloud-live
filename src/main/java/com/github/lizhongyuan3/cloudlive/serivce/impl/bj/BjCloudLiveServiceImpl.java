@@ -1,16 +1,16 @@
-package org.lizy.cloudlive.serivce.impl.bj;
+package com.github.lizhongyuan3.cloudlive.serivce.impl.bj;
 
+import com.github.lizhongyuan3.cloudlive.config.BjConfig;
+import com.github.lizhongyuan3.cloudlive.config.BusException;
+import com.github.lizhongyuan3.cloudlive.config.ErrorCode;
+import com.github.lizhongyuan3.cloudlive.model.CloudLiveRetrofit;
+import com.github.lizhongyuan3.cloudlive.serivce.CloudLiveService;
+import com.github.lizhongyuan3.cloudlive.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.lizy.cloudlive.config.BjConfig;
-import org.lizy.cloudlive.config.BusException;
-import org.lizy.cloudlive.config.ErrorCode;
-import org.lizy.cloudlive.model.CloudLiveRetrofit;
-import org.lizy.cloudlive.model.bj.BjLiveApi;
-import org.lizy.cloudlive.model.bj.request.BjCreateRoomRequest;
-import org.lizy.cloudlive.model.bj.response.BjCreateRoomResponse;
-import org.lizy.cloudlive.model.bj.response.BjLiveResponse;
-import org.lizy.cloudlive.serivce.CloudLiveService;
-import org.lizy.cloudlive.util.CommonUtil;
+import com.github.lizhongyuan3.cloudlive.model.bj.BjLiveApi;
+import com.github.lizhongyuan3.cloudlive.model.bj.request.BjCreateRoomRequest;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.BjCreateRoomResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.BjLiveResponse;
 import retrofit2.Retrofit;
 
 import java.io.IOException;

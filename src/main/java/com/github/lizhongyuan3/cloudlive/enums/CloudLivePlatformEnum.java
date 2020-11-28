@@ -1,7 +1,7 @@
-package org.lizy.cloudlive.enums;
+package com.github.lizhongyuan3.cloudlive.enums;
 
-import org.lizy.cloudlive.config.BusException;
-import org.lizy.cloudlive.config.ErrorCode;
+import com.github.lizhongyuan3.cloudlive.config.ErrorCode;
+import com.github.lizhongyuan3.cloudlive.config.BusException;
 
 import java.util.Objects;
 

@@ -1,7 +1,7 @@
-package org.lizy.cloudlive.serivce;
+package com.github.lizhongyuan3.cloudlive.serivce;
 
-import org.lizy.cloudlive.model.bj.request.BjCreateRoomRequest;
-import org.lizy.cloudlive.model.bj.response.BjCreateRoomResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.request.BjCreateRoomRequest;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.BjCreateRoomResponse;
 
 /**
  * @author lizhongyuan

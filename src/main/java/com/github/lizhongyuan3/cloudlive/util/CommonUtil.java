@@ -1,4 +1,4 @@
-package org.lizy.cloudlive.util;
+package com.github.lizhongyuan3.cloudlive.util;
 
 import cn.hutool.core.util.StrUtil;
 import org.apache.commons.codec.digest.DigestUtils;
