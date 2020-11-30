@@ -4,9 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * @author lizhongyuan
@@ -14,17 +12,25 @@ import java.util.TreeMap;
 public class CommonUtil {
 
     private static final char SEPARATOR = '_';
+    private static final String OBJECT_CLASS_NAME = "java.lang.object";
 
     public static Map<String, Object> object2MapWithUnderline(Object  obj) {
         Map<String, Object> map = new HashMap<>();
         try {
-            Class<?> clazz = obj.getClass();
-            for (Field field : clazz.getDeclaredFields()) {
+            List<Field> fieldList = new ArrayList<>() ;
+            Class<?> tempClass = obj.getClass();
+            while (tempClass !=null && !OBJECT_CLASS_NAME.equals(tempClass.getName().toLowerCase())) {
+                fieldList.addAll(Arrays.asList(tempClass.getDeclaredFields()));
+                tempClass = tempClass.getSuperclass();
+            }
+            for (Field field : fieldList) {
                 field.setAccessible(true);
                 String fieldName = field.getName();
                 fieldName = toUnderlineName(fieldName);
-                String value = field.get(obj) == null ? "" : String.valueOf(field.get(obj));
-                map.put(fieldName, value);
+                if (field.get(obj) == null) {
+                    continue;
+                }
+                map.put(fieldName, String.valueOf(field.get(obj)));
             }
         } catch (Exception e) {
             e.printStackTrace();

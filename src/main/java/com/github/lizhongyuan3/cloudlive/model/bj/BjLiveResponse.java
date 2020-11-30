@@ -1,4 +1,4 @@
-package com.github.lizhongyuan3.cloudlive.model.bj.response;
+package com.github.lizhongyuan3.cloudlive.model.bj;
 
 import lombok.Data;
 
