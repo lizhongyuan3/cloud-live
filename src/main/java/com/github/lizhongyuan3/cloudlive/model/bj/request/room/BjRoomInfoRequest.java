@@ -1,4 +1,4 @@
-package com.github.lizhongyuan3.cloudlive.model.bj.request;
+package com.github.lizhongyuan3.cloudlive.model.bj.request.room;
 
 import com.github.lizhongyuan3.cloudlive.model.CommonRequest;
 import lombok.AllArgsConstructor;
@@ -15,7 +15,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class BjRoomDeleteRequest extends CommonRequest {
+public class BjRoomInfoRequest extends CommonRequest {
     /**
      * 房间ID，14位
      */

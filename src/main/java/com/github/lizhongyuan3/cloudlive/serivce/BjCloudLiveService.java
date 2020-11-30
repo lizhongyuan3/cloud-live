@@ -1,7 +1,9 @@
 package com.github.lizhongyuan3.cloudlive.serivce;
 
 import com.github.lizhongyuan3.cloudlive.model.*;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.*;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomCreateResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomGetCodeResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomInfoResponse;
 
 /**
  * @author lizhongyuan

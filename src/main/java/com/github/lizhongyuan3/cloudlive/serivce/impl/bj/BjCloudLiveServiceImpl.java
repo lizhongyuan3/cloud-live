@@ -4,14 +4,15 @@ import com.github.lizhongyuan3.cloudlive.config.BjConfig;
 import com.github.lizhongyuan3.cloudlive.config.BusException;
 import com.github.lizhongyuan3.cloudlive.config.ErrorCode;
 import com.github.lizhongyuan3.cloudlive.model.CommonRequest;
-import com.github.lizhongyuan3.cloudlive.model.CommonResponse;
 import com.github.lizhongyuan3.cloudlive.model.CloudLiveRetrofit;
-import com.github.lizhongyuan3.cloudlive.model.bj.BjLiveResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.*;
+import com.github.lizhongyuan3.cloudlive.model.bj.BjResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomCreateResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomGetCodeResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomInfoResponse;
 import com.github.lizhongyuan3.cloudlive.serivce.BjCloudLiveService;
 import com.github.lizhongyuan3.cloudlive.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
-import com.github.lizhongyuan3.cloudlive.model.bj.BjLiveApi;
+import com.github.lizhongyuan3.cloudlive.model.bj.BjRoomApi;
 import retrofit2.Retrofit;
 
 import java.io.IOException;
@@ -32,11 +33,11 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
     @Override
     public BjRoomCreateResponse roomCreate(CommonRequest request) {
         Retrofit retrofit = getRetrofit(request);
-        BjLiveResponse<BjRoomCreateResponse> bjLiveResponse;
+        BjResponse<BjRoomCreateResponse> bjResponse;
         String errMsg = "创建百家云课堂出错";
         try {
-            bjLiveResponse = retrofit
-                    .create(BjLiveApi.class)
+            bjResponse = retrofit
+                    .create(BjRoomApi.class)
                     .roomCreate(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
@@ -44,17 +45,17 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
             log.error(errMsg);
             throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
         }
-        return dealResponse(bjLiveResponse, errMsg);
+        return dealResponse(bjResponse, errMsg);
     }
 
     @Override
     public Void roomUpdate(CommonRequest request) {
         Retrofit retrofit = getRetrofit(request);
-        BjLiveResponse<Void> bjLiveResponse;
+        BjResponse<Void> bjResponse;
         String errMsg = "更新百家云课堂出错";
         try {
-            bjLiveResponse = retrofit
-                    .create(BjLiveApi.class)
+            bjResponse = retrofit
+                    .create(BjRoomApi.class)
                     .roomUpdate(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
@@ -62,17 +63,17 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
             log.error(errMsg);
             throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
         }
-        return dealResponse(bjLiveResponse, errMsg);
+        return dealResponse(bjResponse, errMsg);
     }
 
     @Override
     public Void roomDelete(CommonRequest request) {
         Retrofit retrofit = getRetrofit(request);
-        BjLiveResponse<Void> bjLiveResponse;
+        BjResponse<Void> bjResponse;
         String errMsg = "删除百家云课堂出错";
         try {
-            bjLiveResponse = retrofit
-                    .create(BjLiveApi.class)
+            bjResponse = retrofit
+                    .create(BjRoomApi.class)
                     .roomDelete(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
@@ -80,17 +81,17 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
             log.error(errMsg);
             throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
         }
-        return dealResponse(bjLiveResponse, errMsg);
+        return dealResponse(bjResponse, errMsg);
     }
 
     @Override
     public BjRoomInfoResponse roomInfo(CommonRequest request) {
         Retrofit retrofit = getRetrofit(request);
-        BjLiveResponse<BjRoomInfoResponse> bjLiveResponse;
+        BjResponse<BjRoomInfoResponse> bjResponse;
         String errMsg = "获取百家云课堂详情出错";
         try {
-            bjLiveResponse = retrofit
-                    .create(BjLiveApi.class)
+            bjResponse = retrofit
+                    .create(BjRoomApi.class)
                     .roomInfo(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
@@ -98,18 +99,18 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
             log.error(errMsg);
             throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
         }
-        return dealResponse(bjLiveResponse, errMsg);
+        return dealResponse(bjResponse, errMsg);
     }
 
     @Override
     public BjRoomGetCodeResponse roomGetCode(CommonRequest request) {
         Retrofit retrofit = getRetrofit(request);
-        BjLiveResponse<BjRoomGetCodeResponse> bjLiveResponse;
+        BjResponse<BjRoomGetCodeResponse> bjResponse;
         String errMsg = "获取百家云课堂用户参与码出错";
 
         try {
-            bjLiveResponse = retrofit
-                    .create(BjLiveApi.class)
+            bjResponse = retrofit
+                    .create(BjRoomApi.class)
                     .roomGetCode(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
@@ -117,7 +118,7 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
             log.error(errMsg);
             throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
         }
-        return dealResponse(bjLiveResponse, errMsg);
+        return dealResponse(bjResponse, errMsg);
     }
 
     private Retrofit getRetrofit(CommonRequest request) {
@@ -128,14 +129,14 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
         return cloudLiveRetrofit.getRetrofit();
     }
 
-    private <T> T dealResponse(BjLiveResponse<T> bjLiveResponse, String errMsg) {
-        if (bjLiveResponse == null) {
+    private <T> T dealResponse(BjResponse<T> bjResponse, String errMsg) {
+        if (bjResponse == null) {
             throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
         }
-        if (!Objects.equals(bjLiveResponse.getCode(), 0)) {
-            throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, bjLiveResponse.getMsg());
+        if (!Objects.equals(bjResponse.getCode(), 0)) {
+            throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, bjResponse.getMsg());
         }
-        return bjLiveResponse.getData();
+        return bjResponse.getData();
     }
 
 }

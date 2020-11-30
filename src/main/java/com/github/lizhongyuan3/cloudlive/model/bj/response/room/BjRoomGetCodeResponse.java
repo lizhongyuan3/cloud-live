@@ -1,6 +1,6 @@
-package com.github.lizhongyuan3.cloudlive.model.bj.request;
+package com.github.lizhongyuan3.cloudlive.model.bj.response.room;
 
-import com.github.lizhongyuan3.cloudlive.model.CommonRequest;
+import com.github.lizhongyuan3.cloudlive.model.CommonResponse;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,10 +15,9 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class BjRoomInfoRequest extends CommonRequest {
+public class BjRoomGetCodeResponse extends CommonResponse {
     /**
-     * 房间ID，14位
+     * 学生公共参加码，该参加码可以进多个学生，不互踢
      */
-    private Long roomId;
-
+    private String studentCode;
 }

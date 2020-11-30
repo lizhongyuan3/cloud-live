@@ -1,4 +1,4 @@
-package com.github.lizhongyuan3.cloudlive.model.bj.request;
+package com.github.lizhongyuan3.cloudlive.model.bj.request.room;
 
 import com.github.lizhongyuan3.cloudlive.model.CommonRequest;
 import lombok.AllArgsConstructor;

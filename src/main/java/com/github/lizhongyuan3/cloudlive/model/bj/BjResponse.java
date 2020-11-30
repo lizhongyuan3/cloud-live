@@ -7,7 +7,7 @@ import lombok.Data;
  * @author lizhongyuan
  */
 @Data
-public class BjLiveResponse<T> {
+public class BjResponse<T> {
 
     /**
      * 返回码

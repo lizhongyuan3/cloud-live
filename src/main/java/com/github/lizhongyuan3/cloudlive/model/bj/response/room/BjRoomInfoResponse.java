@@ -1,4 +1,4 @@
-package com.github.lizhongyuan3.cloudlive.model.bj.response;
+package com.github.lizhongyuan3.cloudlive.model.bj.response.room;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.github.lizhongyuan3.cloudlive.model.CommonResponse;
