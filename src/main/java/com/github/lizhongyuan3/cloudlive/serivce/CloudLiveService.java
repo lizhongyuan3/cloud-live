@@ -37,4 +37,10 @@ public interface CloudLiveService {
      * @return 请求结果
      */
     CommonResponse roomGetCode(CommonRequest request);
+    /**
+     * 获取视频/音频上传地址
+     * @param request request
+     * @return 请求结果
+     */
+    CommonResponse videoGetUploadUrl(CommonRequest request);
 }

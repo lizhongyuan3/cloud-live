@@ -6,9 +6,9 @@ import com.github.lizhongyuan3.cloudlive.config.ErrorCode;
 import com.github.lizhongyuan3.cloudlive.model.CommonRequest;
 import com.github.lizhongyuan3.cloudlive.model.CloudLiveRetrofit;
 import com.github.lizhongyuan3.cloudlive.model.bj.BjResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomCreateResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomGetCodeResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomInfoResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.BjVideoApi;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.room.*;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.video.*;
 import com.github.lizhongyuan3.cloudlive.serivce.BjCloudLiveService;
 import com.github.lizhongyuan3.cloudlive.util.CommonUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -107,11 +107,28 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
         Retrofit retrofit = getRetrofit(request);
         BjResponse<BjRoomGetCodeResponse> bjResponse;
         String errMsg = "获取百家云课堂用户参与码出错";
-
         try {
             bjResponse = retrofit
                     .create(BjRoomApi.class)
                     .roomGetCode(CommonUtil.object2MapWithUnderline(request))
+                    .execute()
+                    .body();
+        }catch (IOException io) {
+            log.error(errMsg);
+            throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
+        }
+        return dealResponse(bjResponse, errMsg);
+    }
+
+    @Override
+    public BjVideoGetUploadUrlResponse videoGetUploadUrl(CommonRequest request) {
+        Retrofit retrofit = getRetrofit(request);
+        BjResponse<BjVideoGetUploadUrlResponse> bjResponse;
+        String errMsg = "获取视频/音频上传地址 失败";
+        try {
+            bjResponse = retrofit
+                    .create(BjVideoApi.class)
+                    .videoGetUploadUrl(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
         }catch (IOException io) {
