@@ -38,7 +38,7 @@ public class CloudLiveRetrofit {
                     .client(new OkHttpClient
                                     .Builder().addInterceptor(
                             new HttpLoggingInterceptor()
-                                    .setLevel(HttpLoggingInterceptor.Level.BODY)
+                                    .setLevel(bjConfig.getLogLevel() == null ? HttpLoggingInterceptor.Level.NONE : bjConfig.getLogLevel())
                             )
 
                                     .build()

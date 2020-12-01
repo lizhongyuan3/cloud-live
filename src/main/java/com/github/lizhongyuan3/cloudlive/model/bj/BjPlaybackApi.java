@@ -1,9 +1,6 @@
 package com.github.lizhongyuan3.cloudlive.model.bj;
 
 import cn.hutool.json.JSONObject;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomCreateResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomGetCodeResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomInfoResponse;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.video.BjVideoGetUploadUrlResponse;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
@@ -15,40 +12,32 @@ import java.util.Map;
 /**
  * @author lizhongyuan
  */
-public interface BjVideoApi {
-    /**
-     * 获取视频/音频上传地址
-     * @param map 实体
-     * @return 返回值
-     */
-    @FormUrlEncoded
-    @POST("/openapi/video/getUploadUrl")
-    Call<BjResponse<BjVideoGetUploadUrlResponse>> videoGetUploadUrl(@FieldMap Map<String, Object> map);
+public interface BjPlaybackApi {
 
     /**
-     * 批量获取播放器token
+     * 批量获取回放token
      * @param map 实体
      * @return 返回值
      */
     @FormUrlEncoded
-    @POST("/openapi/video/getPlayerTokenBatch")
+    @POST("/openapi/playback/getPlayerTokenBatch")
     Call<BjResponse<Map<String, String>>> videoGetPlayerTokenBatch(@FieldMap Map<String, Object> map);
 
     /**
-     * 更新视频信息
+     * 更新回放信息
      * @param map 实体
      * @return 返回值
      */
     @FormUrlEncoded
-    @POST("/openapi/video/update")
+    @POST("/openapi/playback/update")
     Call<BjResponse<JSONObject>> videoUpdate(@FieldMap Map<String, Object> map);
 
     /**
-     * 删除视频信息
+     * 删除回放信息
      * @param map 实体
      * @return 返回值
      */
     @FormUrlEncoded
-    @POST("/openapi/video/delete")
+    @POST("/openapi/playback/delete")
     Call<BjResponse<JSONObject>> videoDelete(@FieldMap Map<String, Object> map);
 }
