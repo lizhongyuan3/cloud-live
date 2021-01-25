@@ -48,6 +48,18 @@ public class BjRoomCreateRequest extends CommonRequest {
      * 可选值：doubleCamera(双摄像头)、classic(经典模板)、triple(三分屏)
      */
     private String templateName;
+    /**
+     * 指定PC端是否以视频为主 1:以视频为主 2:以PPT为主 （默认是以ppt为主，该选项只针对三分屏有效）
+     */
+    private Integer isVideoMain;
+    /**
+     * 指定手机H5页面是否以视频为主 1:以视频为主 2:以PPT为主 （默认是以视频为主）
+     */
+    private Integer mIsVideoMain;
+    /**
+     * 有无学生上麦，仅在webrtc班型上使用此参数 0：无，1：有
+     */
+    private Integer hasStudentRaise;
 
 
 }

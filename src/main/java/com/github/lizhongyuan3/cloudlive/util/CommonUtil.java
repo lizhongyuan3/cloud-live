@@ -70,7 +70,7 @@ public class CommonUtil {
         StringBuilder toSign = new StringBuilder();
         for (String key : sortedMap.keySet()) {
             String value = params.get(key).toString();
-            if (StrUtil.isNotEmpty(value) && !"sign".equals(key) && !"key".equals(key)) {
+            if (!Objects.isNull(value) && !"sign".equals(key) && !"key".equals(key)) {
                 toSign.append(key).append("=").append(value).append("&");
             }
         }
