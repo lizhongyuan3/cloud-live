@@ -1,5 +1,6 @@
 package com.github.lizhongyuan3.cloudlive.model;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.github.lizhongyuan3.cloudlive.config.BjConfig;
@@ -32,6 +33,7 @@ public class CloudLiveRetrofit {
                     .addConverterFactory(
                             JacksonConverterFactory.create(
                                     new ObjectMapper()
+                                            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                                             .setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE)
                             )
                     )

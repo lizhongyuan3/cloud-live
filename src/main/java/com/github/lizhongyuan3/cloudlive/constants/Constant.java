@@ -8,4 +8,5 @@ import java.time.ZoneId;
 public class Constant {
 
     public static final ZoneId SHANGHAI = ZoneId.of("Asia/Shanghai");
+    public static final Integer STATUS_IS_FINISH = 100;
 }
