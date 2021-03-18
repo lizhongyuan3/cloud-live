@@ -4,7 +4,19 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.lizhongyuan3</groupId>
     <artifactId>cloud-live</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <name>cloud-live</name>
     <description>云直播sdk</description>
     <url>https://github.com/lizhongyuan3/cloud-live.git</url>
