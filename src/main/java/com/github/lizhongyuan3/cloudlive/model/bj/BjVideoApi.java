@@ -1,9 +1,7 @@
 package com.github.lizhongyuan3.cloudlive.model.bj;
 
 import cn.hutool.json.JSONObject;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomCreateResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomGetCodeResponse;
-import com.github.lizhongyuan3.cloudlive.model.bj.response.room.BjRoomInfoResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.video.BjVideoGetInfoResponse;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.video.BjVideoGetUploadUrlResponse;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
@@ -51,4 +49,13 @@ public interface BjVideoApi {
     @FormUrlEncoded
     @POST("/openapi/video/delete")
     Call<BjResponse<JSONObject>> videoDelete(@FieldMap Map<String, Object> map);
+
+    /**
+     * 获取指定ID视频信息
+     * @param map 实体
+     * @return 返回值
+     */
+    @FormUrlEncoded
+    @POST("/openapi/video/getInfo")
+    Call<BjResponse<BjVideoGetInfoResponse>> videoGetInfo(@FieldMap Map<String, Object> map);
 }

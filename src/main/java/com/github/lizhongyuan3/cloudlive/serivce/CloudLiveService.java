@@ -63,6 +63,12 @@ public interface CloudLiveService {
      */
     void videoDelete(CommonRequest request);
     /**
+     * 获取视频详情
+     * @param request request
+     * @return 请求结果
+     */
+    CommonResponse videoGetInfo(CommonRequest request);
+    /**
      * 批量获取回放token
      * @param request request
      * @return 请求结果
@@ -78,13 +84,17 @@ public interface CloudLiveService {
      * @param request request
      */
     void playbackDelete(CommonRequest request);
-
+    /**
+     * 获取回放详情
+     * @param request request
+     * @return 请求结果
+     */
+    CommonResponse playBackGetBasicInfo(CommonRequest request);
     /**
      * 设置转码回调地址（点播和回放）
      * @param request request
      */
     void videoAccountSetTranscodeCallbackUrl(CommonRequest request);
-
     /**
      * 查询转码回调地址（点播和回放）
      * @param request request

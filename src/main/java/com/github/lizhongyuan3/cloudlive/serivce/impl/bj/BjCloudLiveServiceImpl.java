@@ -9,6 +9,7 @@ import com.github.lizhongyuan3.cloudlive.model.CommonRequest;
 import com.github.lizhongyuan3.cloudlive.model.CloudLiveRetrofit;
 import com.github.lizhongyuan3.cloudlive.model.bj.*;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.callback.BjVideoAccountTranscodeCallbackUrlResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.playback.BjPlayBackGetBasicInfoResponse;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.room.*;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.video.*;
 import com.github.lizhongyuan3.cloudlive.serivce.BjCloudLiveService;
@@ -143,6 +144,24 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
     }
 
     @Override
+    public BjVideoGetInfoResponse videoGetInfo(CommonRequest request) {
+        Retrofit retrofit = getRetrofit(request);
+        BjResponse<BjVideoGetInfoResponse> bjResponse;
+        String errMsg = "获取视频/音频详情 失败";
+        try {
+            bjResponse = retrofit
+                    .create(BjVideoApi.class)
+                    .videoGetInfo(CommonUtil.object2MapWithUnderline(request))
+                    .execute()
+                    .body();
+        }catch (IOException io) {
+            log.error(errMsg);
+            throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
+        }
+        return dealResponse(bjResponse, errMsg);
+    }
+
+    @Override
     public BjVideoAccountTranscodeCallbackUrlResponse videoAccountGetTranscodeCallbackUrl(CommonRequest request) {
         Retrofit retrofit = getRetrofit(request);
         BjResponse<BjVideoAccountTranscodeCallbackUrlResponse> bjResponse;
@@ -151,6 +170,24 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
             bjResponse = retrofit
                     .create(BjCallbackApi.class)
                     .videoAccountGetTranscodeCallbackUrl(CommonUtil.object2MapWithUnderline(request))
+                    .execute()
+                    .body();
+        }catch (IOException io) {
+            log.error(errMsg);
+            throw new BusException(ErrorCode.RE_CODE_ERROR_CLOUD_LIVE_ERROR, errMsg);
+        }
+        return dealResponse(bjResponse, errMsg);
+    }
+
+    @Override
+    public BjPlayBackGetBasicInfoResponse playBackGetBasicInfo(CommonRequest request) {
+        Retrofit retrofit = getRetrofit(request);
+        BjResponse<BjPlayBackGetBasicInfoResponse> bjResponse;
+        String errMsg = "获取回放详情 失败";
+        try {
+            bjResponse = retrofit
+                    .create(BjPlaybackApi.class)
+                    .playBackGetBasicInfo(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
         }catch (IOException io) {
@@ -222,7 +259,7 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
         try {
             bjResponse = retrofit
                     .create(BjPlaybackApi.class)
-                    .videoGetPlayerTokenBatch(CommonUtil.object2MapWithUnderline(request))
+                    .playBackGetPlayerTokenBatch(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
         }catch (IOException io) {
@@ -240,7 +277,7 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
         try {
             bjResponse = retrofit
                     .create(BjPlaybackApi.class)
-                    .videoUpdate(CommonUtil.object2MapWithUnderline(request))
+                    .playBackUpdate(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
         }catch (IOException io) {
@@ -258,7 +295,7 @@ public class BjCloudLiveServiceImpl implements BjCloudLiveService {
         try {
             bjResponse = retrofit
                     .create(BjPlaybackApi.class)
-                    .videoDelete(CommonUtil.object2MapWithUnderline(request))
+                    .playBackDelete(CommonUtil.object2MapWithUnderline(request))
                     .execute()
                     .body();
         }catch (IOException io) {

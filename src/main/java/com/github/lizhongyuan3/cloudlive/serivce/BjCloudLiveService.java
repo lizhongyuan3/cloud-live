@@ -1,8 +1,8 @@
 package com.github.lizhongyuan3.cloudlive.serivce;
 
-import cn.hutool.json.JSONObject;
 import com.github.lizhongyuan3.cloudlive.model.*;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.callback.BjVideoAccountTranscodeCallbackUrlResponse;
+import com.github.lizhongyuan3.cloudlive.model.bj.response.playback.BjPlayBackGetBasicInfoResponse;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.room.*;
 import com.github.lizhongyuan3.cloudlive.model.bj.response.video.*;
 
@@ -54,7 +54,13 @@ public interface BjCloudLiveService extends CloudLiveService {
      */
     @Override
     BjVideoGetUploadUrlResponse videoGetUploadUrl(CommonRequest request);
-
+    /**
+     * 获取视频详情
+     * @param request request
+     * @return 请求结果
+     */
+    @Override
+    BjVideoGetInfoResponse videoGetInfo(CommonRequest request);
     /**
      * 设置转码回调地址（点播和回放）
      * @param request request
@@ -62,4 +68,11 @@ public interface BjCloudLiveService extends CloudLiveService {
      */
     @Override
     BjVideoAccountTranscodeCallbackUrlResponse videoAccountGetTranscodeCallbackUrl(CommonRequest request);
+    /**
+     * 获取回放详情
+     * @param request request
+     * @return 请求结果
+     */
+    @Override
+    BjPlayBackGetBasicInfoResponse playBackGetBasicInfo(CommonRequest request);
 }
